@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Circular</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body{
+            background-image: linear-gradient(45deg, gray, cyan);
+        }
+        .menu{
+            bottom: 0;
+            margin: auto;
+            font-size: 30px;
+            position: relative;
+            left: 50%;
+            transform: translate(-50px,-50px);
+            top: 400px;
+        }
+
+        .menucircular {
+            display: none;
+        }
+
+        .linha {
+            background-color: white;
+            width: 25px;
+            height: 3px;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transition: all .5s ease-in-out;
+            transition: all .5s ease-in-out;
+            margin-left: -12px;
+            margin-top: -1px;
+        }
+
+        /*BARRINHA DO MENU*/
+
+        .linha-1 {
+            -webkit-transform: translate3d(0, -8px, 0);
+            transform: translate3d(0, -8px, 0);
+        }
+
+        .linha-2 {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0px, 0);
+        }
+
+        .linha-3 {
+            -webkit-transform: translate3d(0, 8px, 0);
+            transform: translate3d(0, 8px, 0);
+        }
+
+        .menucircular:checked+.menu-btn .linha-1 {
+            -webkit-transform: translate3d(0, 0, 0)rotate(45deg);
+            transform: translate3d(0, 0, 0)rotate(45deg);
+        }
+
+        .menucircular:checked+.menu-btn .linha-2 {
+            -webkit-transform: translate3d(0, 0, 0)scale(0.1, 1.0);
+            transform: translate3d(0, 0, 0)scale(0.1, 1.0);
+        }
+
+        .menucircular:checked+.menu-btn .linha-3 {
+            -webkit-transform: translate3d(0, 0, 0)rotate(-45deg);
+            transform: translate3d(0, 0, 0)rotate(-45deg);
+        }
+
+
+        .menu-btn,
+        .menu-a {
+            color: white;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            position: absolute;
+            border: 2px solid #282828;
+            border-radius: 50%;
+            text-align: center;
+            background-color: #131313;
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            -webkit-transform: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .menu-btn {
+            z-index: 2;
+            cursor: pointer;
+            -webkit-transform: scale(1.1, 1.1)translate3d(0, 0, 0);
+            transform: scale(1.1, 1.1)translate3d(0, 0, 0);
+            -webkit-transition-timing-function: cubic-bezier(.2, .9, .35, 1.3);
+        }
+
+        .menucircular:checked~.menu-a:nth-child(3) {
+            -webkit-transition-duration: .3s;
+            transition-duration: .3s;
+            -webkit-transform: translate3d(0.1px, -100px, 0);
+            transform: translate3d(0.1px, -100px, 0);
+        }
+
+        .menucircular:checked~.menu-a:nth-child(4) {
+            -webkit-transition-duration: .35s;
+            transition-duration: .35s;
+            -webkit-transform: translate3d(90px, -50px, 0);
+            transform: translate3d(90px, -50px, 0);
+        }
+
+        .menucircular:checked~.menu-a:nth-child(5) {
+            -webkit-transition-duration: .4s;
+            transition-duration: .4s;
+            -webkit-transform: translate3d(90px, 50px, 0);
+            transform: translate3d(90px, 50px, 0);
+        }
+
+        .menucircular:checked~.menu-a:nth-child(6) {
+            -webkit-transition-duration: .45s;
+            transition-duration: .45s;
+            -webkit-transform: translate3d(0.1px, 100px, 0);
+            transform: translate3d(0.1px, 100px, 0);
+        }
+
+        .menucircular:checked~.menu-a:nth-child(7) {
+            -webkit-transition-duration: .5s;
+            transition-duration: .5s;
+            -webkit-transform: translate3d(-90px, 50px, 0);
+            transform: translate3d(-90px, 50px, 0);
+        }
+
+        .menucircular:checked+.menu-btn {
+            -webkit-transition: all .5s linear;
+            transition: all .5s linear;
+            -webkit-transform: scale(0.9, 0.9)translate3d(0, 0, 0);
+            transform: scale(0.9, 0.9)translate3d(0, 0, 0);
+        }
+
+        .menucircular:checked~.menu-a {
+            -webkit-transition-timing-function: cubic-bezier(.27, .68, .53, .3);
+            transition-timing-function: cubic-bezier(.27, .68, .53, .3);
+        }
+
+        .menu-btn:hover {
+            -webkit-transform: scale(1.2, );
+            transform: scale(1.2, );
+            box-shadow: inset 1px 2px cyan, inset 1px -1px 2px gray;
+        }
+
+        /*COR DOS INCONES*/
+
+
+        .ai-1 {
+            background-color: black;
+        }
+
+        .ai-1:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .ai-2 {
+            background-color: black;
+        }
+
+        .ai-2:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .ai-3 {
+            background-color: black;
+        }
+
+        .ai-3:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .ai-4 {
+            background-color: black;
+        }
+
+        .ai-4:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .ai-5 {
+            background-color: black;
+        }
+
+        .ai-5:hover {
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="menu">
+            <input type="checkbox" name="menucircular" id="menucircular" class="menucircular">
+            <label for="menucircular" class="menu-btn">
+                <spam class="linha linha-1"></spam>
+                <spam class="linha linha-2"></spam>
+                <spam class="linha linha-3"></spam>
+            </label>
+            <a href="site-design.html" class="menu-a ai-1">
+                <i class="fa fa-home"></i>
+            </a>
+            <a href="profissoes.html" class="menu-a ai-2">
+                <i class="fas fa-laptop"></i>
+            </a>
+            <a href="entrevistas.html" class="menu-a ai-3">
+                <i class="fa-sharp fa-solid fa-circle-play"></i>
+            </a>
+            <a href="cursos.html" class="menu-a ai-4">
+                <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+            </a>
+            <a href="equipe.html" class="menu-a ai-5">
+                <i class="fa-sharp fa-solid fa-users"></i>
+            </a>
+    </div>
+</body>
+
+</html>
